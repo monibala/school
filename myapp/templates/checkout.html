@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+  <table id="cart" class="table table-hover table-condensed">
+    <thead>
+      <tr>
+        <th style="width:20%">Name</th>
+        <th style="width:20%">Price</th>
+        <th style="width:20%">Quantity</th>
+        <th style="width:10%">Subtotal</th>
+              
+      </tr>
+    </thead>
+    <tbody>
+      {% for p,q,r in data %}
+    
+      <tr>
+       <td data-th="name">
+          <div class="row">
+            <div class="col-sm-10">
+              <h4 >{{p.0.name}}</h4>
+              <p></p>
+            </div>
+          </div>
+        </td>
+       <td data-th="fee">{{p.0.fee}}</td>
+          </div> 
+      
+          <th data="quantity">
+            
+           
+          <input id="quantity" name="quantity" value="{{r}}" size="1" >
+          
+          </th>
+          
+          <td data-th="subtotal">$ {{q}}</td>
+          
+        </td>
+        </tr>
+      
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+               <td colspan="2" class="hidden-xs"></td>
+        <td class="hidden-xs text-center"><strong>Total $ {{total}}</strong></td>
+         
+       </tr>
+    </tfoot>
+  </table>
+</div>
+<!-- Checkout  Form -->
+
+<form  action="" method="POST" style="text-align: center;border-width:5px; border-left:100px; border-right:100px; border-style:outset;"">
+  {% csrf_token %}
+  
+  <fieldset id="edd_checkout_user_info">
+    <legend>Personal Info</legend>
+    <p id="edd-first-name-wrap">
+      <label class="edd-label" for="edd-first">
+      First Name <span class="edd-required-indicator">*</span>
+      </label>
+      <input class="edd-input required" type="text" name="fname" placeholder="First name" id="edd-first" value="" required="">
+    </p>
+    <p id="edd-last-name-wrap">
+      <label class="edd-label" for="edd-last">
+      Last Name </label>
+      <input class="edd-input" type="text" name="lname" id="edd-last" placeholder="Last name" value="">
+    </p>
+    <p id="edd-email-wrap">
+      <label class="edd-label" for="edd-email">
+      Email Address <span class="edd-required-indicator">*</span></label>
+      <input class="edd-input required" type="email" name="email" placeholder="Email address" id="edd-email" value="">
+    </p>
+   
+    <p id="edd-last-name-wrap">
+      <label class="edd-label" for="edd-last">
+      Mobile Number </label>
+      <input class="edd-input" type="number" name="mob_no" id="edd-last" placeholder="Enter mobile number" value="">
+    </p>
+    <p id="edd-last-name-wrap">
+      <label class="edd-label" for="edd-last">
+      Address </label>
+      <input class="edd-input" type="text" name="Address" id="edd-last" placeholder="Enter mobile number" value="">
+    </p>
+    <p id="edd-last-name-wrap">
+      <label class="edd-label" for="edd-last">
+      State </label>
+      <input class="edd-input" type="text" name="State" id="edd-last" placeholder="Enter mobile number" value="">
+    </p>
+    <p id="edd-last-name-wrap">
+      <label class="edd-label" for="edd-last">
+      Pincode</label>
+      <input class="edd-input" type="number" name="pincode" id="edd-last" placeholder="Enter mobile number" value="">
+    </p>
+
+
+  </fieldset>
+  <fieldset id="edd_purchase_submit">
+   
+    <a href="{% url 'pay' %}" class="btn btn-success ">Pay</a>
+    <a href="{% url 'paypal' %}" class="btn btn-success">Paypal</a>
+    <a href="{% url 'payment' %}" class="btn btn-success">Pay with Razorpay</a>
+    <a href="{% url 'cod' %}" class="btn btn-success">COD</a>
+
+    <!-- <input type="submit" class="edd-submit button" id="edd-purchase-button" name="edd-purchase" value="paypal">  -->
+    <!-- <input type="submit" class="edd-submit button" id="edd-purchase-button" name="edd-purchase" value="pay">  -->
+  </fieldset>
+</form>
+
+{% endblock %}

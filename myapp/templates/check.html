@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+  <table id="cart" class="table table-hover table-condensed">
+    <thead>
+      <tr>
+        <th style="width:30%">Name</th>
+        <th style="width:30%">Price</th>
+        <th style="width:30%">Quantity</th>
+        <th style="width:10%">Subtotal</th>
+              
+      </tr>
+    </thead>
+    <tbody>
+      {% for p,q,r in data %}
+      <tr>
+       <td data-th="name">
+          <div class="row">
+            <div class="col-sm-10">
+              <h4 >{{p.0.name}}</h4>
+              <p></p>
+            </div>
+          </div>
+        </td>
+       <td data-th="fee">{{p.0.fee}}</td>
+          </div> 
+          <!-- <div class="col"> -->
+          <th data="quantity">
+            <a href="{% url 'increment' %}?incrid={{p.0.id}}" class="btn btn-primary">+</a>
+           
+          <input id="quantity" name="quantity" value="{{r}}" size="1" >
+          <a href="{% url 'decrement' %}?decrid={{p.0.id}}" class="btn btn-primary">-</a>
+          <!-- <a href="{% url 'increment' %}?decrid={{p.0.id}}" button type="button" class="button rounded-circle">-</button></a> -->
+          </th>
+          <!-- </div> -->
+          <td data-th="subtotal">$ {{q}}</td>
+          <!-- <td class="hidden-xs text-center"><strong>$ {{pro.0.subtotal}}</strong></td> -->
+          <td  data-th="">
+            
+          
+            <a href="{% url 'delete_product' %}?id={{p.0.id}}" class="btn btn-primary">Remove</a>
+            </td> 
+        </td>
+        </tr>
+      
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td><a href="{% url 'class' %}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+        <td colspan="2" class="hidden-xs"></td>
+        <td class="hidden-xs text-center"><strong>Total $ {{total}}</strong></td>
+         
+        <td><a href="{% url 'checkout' %}" class="btn btn-success btn-block">Checkout<i class="fa fa-angle-right"></i></a></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+{% endblock %}

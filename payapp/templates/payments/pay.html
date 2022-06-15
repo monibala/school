@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Payment Home</title>
+</head>
+
+<body>
+    <h2>Payment Home</h2>
+    <!-- {% if error %}
+    <h3>{{ error }}</h3>
+    {% endif %} -->
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+        <label for="username">Username: </label>
+        <input type="text" name="username" required></p>
+        <p>
+        <label for="password">Password: </label>
+        <input type="text" name="password" required></p>
+        <p>
+        <label for="amount">Amount: </label>
+       
+        <input type="number" name="amount" value=" "></p>
+       
+        <input type="submit" name="submit" value="Submit" required>
+    </form>
+</body>
+
+</html>
+
