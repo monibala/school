@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+# Import to serve staticfiles correctly
+import os
+import django_heroku
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -125,9 +128,6 @@ import os
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-MEDIA_URL = '/media/'
-
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -157,3 +157,4 @@ PAYPAL_RECEIVER_EMAIL = 'smonicse@gmail.com'
 PAYPAL_TEST = True
 RAZORPAY_KEY_ID = 'rzp_test_1vDelUfydoNmf0'
 RAZORPAY_KEY_SECRET = 'FJ4lcy6BkkUhA6mx0MqWYc6n'
+django_heroku.settings(locals())
