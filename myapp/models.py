@@ -14,7 +14,7 @@ class Classes(models.Model):
     time = models.TimeField(blank=True,null=True)
     name = models.CharField(max_length=100,blank=True,null=True)
     fee = models.IntegerField(blank = True, null = True)
-    quantity = models.IntegerField(default=1)
+    # quantity = models.IntegerField(default=1)
 
    
 class Order(models.Model):
