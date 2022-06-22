@@ -1,5 +1,5 @@
-from msilib.schema import Class
-from sre_constants import SUCCESS
+# from msilib.schema import Class
+# from sre_constants import SUCCESS
 from django.shortcuts import render
 from django.contrib.auth.hashers import make_password
 # Create your views here.
