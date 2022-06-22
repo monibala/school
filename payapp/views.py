@@ -14,7 +14,7 @@ from django.views.decorators.csrf import csrf_protect
 
 def initiate_payment(request):
     if request.method == "GET":
-        return render(request, 'payments/pay.html')
+        return render(request, 'pay.html')
     try:
         username = request.POST['username']
         password = request.POST['password']
@@ -36,9 +36,9 @@ def initiate_payment(request):
         ('TXN_AMOUNT', str(transaction.amount)),
         ('CHANNEL_ID', settings.PAYTM_CHANNEL_ID),
         ('WEBSITE', settings.PAYTM_WEBSITE),
-        
+        ('CUST_ID', str(transaction.made_by.email)),
         ('INDUSTRY_TYPE_ID', settings.PAYTM_INDUSTRY_TYPE_ID),
-        ('CALLBACK_URL', 'http://127.0.0.1:8000/payments/callback/'),
+        ('CALLBACK_URL', 'http://127.0.0.1:8000/callback/'),
         # ('PAYMENT_MODE_ONLY', 'NO'),
     )
 
@@ -52,7 +52,11 @@ def initiate_payment(request):
     print('SENT: ', checksum)
     print(paytm_params)
     
-    return render(request, 'payments/redirect.html',context=paytm_params)
+    return render(request, 'redirect.html',context=paytm_params)
+
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt    
 
 def callback(request):
     if request.method == 'POST':
@@ -70,7 +74,7 @@ def callback(request):
             received_data['message'] = "Checksum Matched"
         else:
             received_data['message'] = "Checksum Mismatched"
-            return render(request, 'payments/callback.html', context=received_data)
-        return render(request, 'payments/callback.html', context=received_data)
+            return render(request, 'callback.html', context=received_data)
+        return render(request, 'callback.html', context=received_data)
         
 

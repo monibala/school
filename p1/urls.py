@@ -57,7 +57,7 @@ urlpatterns = [
     path('password_reset_confirm/<token>/<uidb64>', views.PasswordResetconfirm, name='password_reset_confirm'),
     path('recover-password/', views.recoverpassword, name='recover-password'),
     # path('recover-password/', views.password_reset_request, name='recover-password'),
-    path('payapp/',include('payapp.urls')),
+    path('',include('payapp.urls')),
     path('paypalpay/',include('paypalpay.urls')),
     path('paypal/', include('paypal.standard.ipn.urls')),
     path('rpayapp/', include('rpayapp.urls')),
