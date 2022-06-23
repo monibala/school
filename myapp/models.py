@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
     
 class Classes(models.Model):
-    images = models.ImageField(upload_to='images',blank=True,null=True)
+    images = models.ImageField(upload_to='img',blank=True,null=True)
     description = models.TextField(blank=True,null=True)
     age = models.IntegerField(blank=True,null=True)
     seats = models.IntegerField(blank=True,null=True)
