@@ -45,8 +45,8 @@ def initiate_payment(request):
     paytm_params = dict(params)
     checksum = generate_checksum(paytm_params, merchant_key)
    
-    transaction.checksum = checksum
-    transaction.save()
+    # transaction.checksum = checksum
+    # transaction.save()
     
     paytm_params['CHECKSUMHASH'] = checksum
     print('SENT: ', checksum)
