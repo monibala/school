@@ -24,7 +24,7 @@ def initiate_payment(request):
             raise ValueError
         auth_login(request=request, user=user)
     except:
-        return render(request, 'payments/pay.html', context={'error': 'Wrong Accound Details or amount'})
+        return render(request, 'pay.html', context={'error': 'Wrong Accound Details or amount'})
     order_id = paytm.__id_generator__()
     transaction = Transaction.objects.create(made_by=user, amount=amount, order_id=order_id)
     
