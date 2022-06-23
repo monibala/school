@@ -6,9 +6,9 @@ from myapp.models import OrderItem
 
 
 def payment(request):
-    order = get_object_or_404(OrderItem)
+    # order = get_object_or_404(OrderItem)
     # amount = order.total
-    print(order)
+    # print(order)
     # if request.method == "POST":
         
         # amount = amount

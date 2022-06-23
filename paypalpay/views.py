@@ -24,14 +24,14 @@ from paypal.standard.forms import PayPalPaymentsForm
 def initiate_payment(request):
     # order_id = request.session.get('orderid')
     # print(order_id)
-    order = get_object_or_404(OrderItem)
+    # order = get_object_or_404(OrderItem)
     # order = Order.objects.get(user=User.objects.get(id=request.user.id))
-    print(order)
+    # print(order)
     host = request.get_host()
 
     paypal_dict = {
         'business': settings.PAYPAL_RECEIVER_EMAIL,
-        'amount' : order.total,
+        'amount' : 100,
         # 'amount': '%.2f' % order.total().quantize(
         #     Decimal('.01')),
         # 'item_name': 'Order {}'.format(order.id),

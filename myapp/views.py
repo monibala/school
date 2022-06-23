@@ -69,6 +69,8 @@ def check (request):
             # crt.save()
             crt = OrderItem(total=total)    
             crt.save()       
+  
+       
         res = {'data':li, 'total':total}
         print(res)
         return render(request,'check.html',res)
